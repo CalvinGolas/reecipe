@@ -80,6 +80,11 @@ for carousel in carousel_links:
             print()
             output_dictionary[link][meta_type] = meta_value
 
+        Nutrition_Fact_Element = browser.find_element_by_xpath("//div[@class = 'partial recipe-nutrition-section']/div[@class = 'section-body']")
+        Nutrition_Facts = Nutrition_Fact_Element.text
+        print(Nutrition_Facts)
+        output_dictionary[link]["Nutrition"] = Nutrition_Facts
+
         recipe_count += 1
         if recipe_count >= max_recipe:
             recipe_count = 0
