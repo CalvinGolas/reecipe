@@ -43,13 +43,12 @@ class DatabaseUploader:
 
 
 if __name__ == '__main__':
-
     # Read the yml file saved locally in conf/credentials.yml
     try:
-        conf = yaml.load(open('conf/credentials.yml'))
-        dbHost = conf['databaseLogin']['host']
-        dbUsername = conf['databaseLogin']['host']
-        dbPassword = conf['databaseLogin']['password']
+        conf = yaml.safe_load(open('conf/credentials.yml'))
+        dbHost = conf['databaselogin']['host']
+        dbUsername = conf['databaselogin']['username']
+        dbPassword = conf['databaselogin']['password']
         dbUploader = DatabaseUploader(dbHost, dbUsername, dbPassword)
         json_data = JsonUploader()
         json_data.json_data_extraction(dbUploader, json_file_path='C:/Users/Reece/Desktop/JsonTest.json')
